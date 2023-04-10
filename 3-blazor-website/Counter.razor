@@ -1,0 +1,51 @@
+@page "/counter"
+
+<h1>Static Counter</h1>
+
+<p>Current static count: <span style="font-size:42px">@currentCount</span></p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    public static int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+
+        StaticCount.FireUpdate();
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        StaticCount.NewCounterValue += OnNewCounterValue;
+    }
+
+    void OnNewCounterValue(object sender, EventArgs e)
+    {
+        InvokeAsync(() =>
+        {
+            StateHasChanged();
+        });
+    }
+
+    public void Dispose()
+    {
+        StaticCount.NewCounterValue -= OnNewCounterValue;
+    }
+
+}
+
+@code{
+    public static class StaticCount
+    {
+        public static event EventHandler NewCounterValue;
+
+        public static void FireUpdate()
+        {
+            NewCounterValue?.Invoke(null, new EventArgs());
+        }
+    }
+}

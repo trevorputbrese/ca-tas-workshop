@@ -15,7 +15,8 @@ cf target -s $SPACE_NAME"
 ```
 
 
-## Deploy your first app to prod with TAS:  a static website
+
+## PART 1: Create a static website and deploy with TAS
 1. Create a new directory on your workstation called “static-website”
 2. Create an index.html
 3. Create a manifest.yaml
@@ -26,6 +27,9 @@ cf target -s $SPACE_NAME"
 cf push -f manifest.yaml
 ```
 7.  Explore the app via the CLI and UI (Apps Manager)
+```
+cf app my-static-website
+```
 8.  Iterate on the app and re-push
 9.  Review builfpacks:  what are they and what do they do?  
     a.  https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/staticfile-index.html
@@ -37,3 +41,16 @@ cf push -f manifest.yaml
         cf logs my-static-website
         ```
 
+## PART 2:  Deploy "Hello World" DotNet site with TAS
+1.  Create a new directory on your workstation:  "dotnet-webapp"
+2.  Inside that directory, create a new dotnet blazor app:
+```sh
+dotnet new blazorserver --no-https -f net6.0 -o .
+```
+3.  Run the app locally on your workstation:
+```sh
+dotnet watch
+```
+4.  Push the app to prod using TAS:
+    a.  Create `manifest.yaml` file, but give the app a different name.
+    b.  `` cf pufh -f manifest.yaml``

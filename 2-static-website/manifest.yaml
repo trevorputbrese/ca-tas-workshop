@@ -1,0 +1,4 @@
+---
+applications:
+- name: my-static-website
+  random-route: true

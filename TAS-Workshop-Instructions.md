@@ -1,6 +1,6 @@
-#TAS Workshop Instructions
+#TAS Workshop Instructions#
 
-##Onboarding to TAS
+##Onboarding to TAS##
 1.  Login to Apps Manager:  https://apps.sys.tanzufordevs.net/
 1.  Access your tenant space.  This file here lists the space to which you have been assigned.
 2.  Download the `CF CLI`  (https://apps.sys.tanzufordevs.net/tools)

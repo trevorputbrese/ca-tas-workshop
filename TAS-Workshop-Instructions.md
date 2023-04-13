@@ -66,7 +66,7 @@
 <br/>
 
 ## PART 4:  Deploy ToDo API Based App & Bind to MySQL instance
-1.  Clone https://github.com/p-ssanders/tas-workshop-todo-api  
+1.  Clone the following repo:   https://github.com/p-ssanders/tas-workshop-todo-api  
     ```
     git clone https://github.com/p-ssanders/tas-workshop-todo-api
     ```
@@ -108,7 +108,42 @@
 <br/>
 
 ## PART 5:  Onto TAS with the ToDo App  
-1.  Push the App to TAS
+1.  Push the App to TAS  
+    a.  Interact with the API
+    b.  Inspect logs:  
+    ```
+    cf logs
+    ```
+    c.  Observer failure indicating inability to establish connection to MySQL:
+    > MySqlConnector.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.  
+    
+    d.  Review environmental variables:
+    ```
+    cf env $APP_NAME
+    ```
+    c.  observe VCAP_SERVICES without MySQL connection info  
+
+2.  View marketplace services in either AppsMan or the CLI:  
+    a.  [AppsMan Marketplace](https://apps.sys.tanzufordevs.net/organizations/4e22e92a-a08a-41ee-a277-4bbdf2c6a753/marketplace)  
+    b.  via CLI:  
+    ```
+    cf marketplace  
+
+    ```
+    c.  View descriptions of individual plans of MySQL service offering:  
+    ```
+    cf marketplace -e p.mysql
+    ```
+3.  Provision a MySQL instance with the `db-small` plan type:  
+    ```
+    cf create-service f create-service p.mysql db-small mysql-$YOUR_NAME
+    ```
+4.  Bind the MySQL instance to the app:  
+    ```
+    cf bin-service $APP_NAME $MY_SQL_INSTANCE
+    ```  
+    (the $MY_SQL_INSTANCE name will be instance you provisioned in step 3:  mysql-$YOUR_NAME)
+
 
 
 

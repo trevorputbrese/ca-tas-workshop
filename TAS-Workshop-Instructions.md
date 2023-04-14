@@ -155,8 +155,8 @@
     cf restage $APP_NAME
     ```
 6. Interact with the app:  
-    a.  Try POST'ing/GET'ing data
-    b.  Inspect logs
+    a.  Try POST'ing/GET'ing data  
+    b.  Inspect logs  
     c.  Observe failure indicating missing schema in the DB:  
     >  “MySqlConnector.MySqlException (0x80004005): Table 'service_instance_db.TodoItems' doesn't exist”  
 7.  Run the migrations:

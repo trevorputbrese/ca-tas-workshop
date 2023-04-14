@@ -108,27 +108,31 @@
 <br/>
 
 ## PART 5:  Onto TAS with the ToDo App  
-1.  Push the App to TAS  
-    a.  Interact with the API
-    b.  Inspect logs:  
+1.  Push the App to TAS:  
+    ```
+    cf push
+    ```
+    
+    a.  The app will be accessssible at `https://$ROUTE/swagger/index.html`  
+    b.  Interact with the API
+    c.  Inspect logs:  
     ```
     cf logs
     ```
-    c.  Observer failure indicating inability to establish connection to MySQL:
+    d.  Observer failure indicating inability to establish connection to MySQL:
     > MySqlConnector.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.  
     
-    d.  Review environmental variables:
+    e.  Review environmental variables:
     ```
     cf env $APP_NAME
     ```
-    c.  observe VCAP_SERVICES without MySQL connection info  
+    f.  observe VCAP_SERVICES without MySQL connection info  
 
 2.  View marketplace services in either AppsMan or the CLI:  
     a.  [AppsMan Marketplace](https://apps.sys.tanzufordevs.net/organizations/4e22e92a-a08a-41ee-a277-4bbdf2c6a753/marketplace)  
     b.  via CLI:  
     ```
-    cf marketplace  
-
+    cf marketplace
     ```
     c.  View descriptions of individual plans of MySQL service offering:  
     ```
@@ -136,13 +140,75 @@
     ```
 3.  Provision a MySQL instance with the `db-small` plan type:  
     ```
-    cf create-service f create-service p.mysql db-small mysql-$YOUR_NAME
+    cf create-service p.mysql db-small mysql_$YOUR_NAME
     ```
-4.  Bind the MySQL instance to the app:  
+4.  Wait till the MySQL instance is finished provisioning.  You can check this in `AppsMan` or via the CLI:  
     ```
-    cf bin-service $APP_NAME $MY_SQL_INSTANCE
+    cf services
+    ```
+5.  Once the MySQL service is provisioned, bind it to the app:
+    ```
+    cf bind-service $APP_NAME $MY_SQL_INSTANCE
     ```  
-    (the $MY_SQL_INSTANCE name will be instance you provisioned in step 3:  mysql-$YOUR_NAME)
+5.  Restage your app:
+    ```
+    cf restage $APP_NAME
+    ```
+6. Interact with the app:  
+    a.  Try POST'ing/GET'ing data
+    b.  Inspect logs
+    c.  Observe failure indicating missing schema in the DB:  
+    >  “MySqlConnector.MySqlException (0x80004005): Table 'service_instance_db.TodoItems' doesn't exist”  
+7.  Run the migrations:
+    ```
+    cf run-task my-dotnet-api --command "/home/vcap/deps/0/dotnet_publish/todo-api runtask=migrate" --name list-dir
+    ```
+8.  Check the status of the task:
+    ```
+    cf tasks $APP_NAME
+    ```
+9.  Interact with the app again:  
+    a.  POST/GET some data
+    b.  Restart the app
+    ```
+    cf stop $APP_NAME
+    cf start $APP_NAME
+    ```
+    c.  Notice the data persists
+10. Scale the app:
+    ```
+    cf scale $APP_NAME -i 2
+    ```
+11.  Interact with the app again:
+    a.  Notice the data persists across multiple instances
+
+
+<br/>
+
+## PART 6:  Stretch Goals for Workshop
+1.  Provision an App SSO service
+2.  Try a blue/green deployment
+
+
+<br/>
+
+## PART 7:  Wrap-Up
+
+
+<br/>
+
+## PART 8:  References
+https://docs.steeltoe.io/guides/get-to-know-steeltoe/exercise1.html?tabs=visual-studio  
+https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-7.0  
+https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/concepts-overview.html  
+https://12factor.net/  
+
+
+
+
+
+
+
 
 
 

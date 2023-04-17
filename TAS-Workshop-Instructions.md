@@ -192,7 +192,7 @@
 
 <br/>
 
-## PART 7:  Wrap-Up
+## PART 7:  Wrap-Up and Q&A
 
 
 <br/>

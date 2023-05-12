@@ -26,7 +26,7 @@ You will need a workstation with the following:
 2.  Ability to install the `cf cli` which you can download from our hosted TAS environment
 3.  `git` CLI installed  
 4.  Dotnet 6.0 SDK installed:
-    a.  can be downloaded from [here] (https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+    a.  can be downloaded from [from the Microsoft website](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 6.  `Docker` installed
 7.  Recommend having an IDE such as:  
     a.  VSCode with C# extension

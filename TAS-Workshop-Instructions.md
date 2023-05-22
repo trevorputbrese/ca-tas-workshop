@@ -1,5 +1,10 @@
 # TAS Workshop Instructions
 
+## NOTE: Getting started
+1.  A Windows jumpbox with all the required software pre-installed will be provided to workshop attendees.  The instructor will provide you the credentials and IP address necessary to RDP into your jumpbox.  Included on that jumpbox will be a text file saved on the desktop with additional credentials required for this workshop.  
+
+2.  The instructions below are intended to be run from within the jumpbox.  Please RDP into it before getting started.  
+
 ## PART 1:  Onboarding to TAS
 
 1.  Login to Apps Manager:   https://apps.sys.tanzufordevs.net <br/>

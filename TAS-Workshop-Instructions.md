@@ -173,7 +173,7 @@
     cf tasks $APP_NAME
     ```
 9.  Interact with the app again:  
-    a.  POST/GET some data
+    a.  POST/GET some data  
     b.  Restart the app
     ```
     cf stop $APP_NAME
@@ -184,7 +184,7 @@
     ```
     cf scale $APP_NAME -i 2
     ```
-11.  Interact with the app again:
+11.  Interact with the app again:  
     a.  Notice the data persists across multiple instances
 
 

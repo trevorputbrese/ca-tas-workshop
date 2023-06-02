@@ -70,7 +70,7 @@
 
 <br/>
 
-## PART 4:  Deploy ToDo API Based App & Bind to MySQL instance
+## PART 4:  Deploy "To Do" API based app locally with Docker & bind to MySQL instance
 1.  Clone the following repo:   https://github.com/p-ssanders/tas-workshop-todo-api  
     ```
     git clone https://github.com/p-ssanders/tas-workshop-todo-api
@@ -112,7 +112,7 @@
 
 <br/>
 
-## PART 5:  Onto TAS with the ToDo App  
+## PART 5:  Deploy "To Do" App onto TAS, provision DB, & bind to it.   
 1.  Push the App to TAS:  
     ```
     cf push
@@ -124,7 +124,7 @@
     ```
     cf logs
     ```
-    d.  Observer failure indicating inability to establish connection to MySQL:
+    d.  Observe failure indicating inability to establish connection to MySQL:
     > MySqlConnector.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.  
     
     e.  Review environmental variables:

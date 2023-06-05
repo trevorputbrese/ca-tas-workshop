@@ -22,7 +22,7 @@
 
 ## PART 2: Create a static website and deploy with TAS
 
-1. Create a new directory on your workstation called “static-website”<br/>
+1. Create a new directory on your workstation under `C:\Users\tas-admin\projects\` called `static-website`  
 2. Create an index.html
 3. Create a manifest.yaml
 4. Create a Staticfile
@@ -50,7 +50,7 @@
 <br/>
 
 ## PART 3:  Deploy "Hello World" DotNet Blazor site with TAS
-1.  Create a new directory on your workstation:  "dotnet-webapp"
+1.  Create a new directory on your workstation under `C:\Users\tas-admin\projects\` called   `dotnet-webapp`  
 2.  Inside that directory, create a new dotnet blazor app:
     ```
     dotnet new blazorserver --no-https -f net6.0 -o .

@@ -82,7 +82,8 @@
     ```
 3.  Observe and explore the API:  
     a.  http://localhost:5180/swagger/index.html  
-    b.  POST'ed data can be GET'ed because data is stored in-memory
+    b.  POST'ed data can be GET'ed because data is stored in-memory  
+    c.  exit the app via `ctrl-c`
 4.  Checkout branch `mysql` <br/>
     ```
     git checkout mysql  
@@ -93,20 +94,21 @@
     ```
     dotnet run  
     ```
-    a.  Interact with the API
-    b.  Observe connection failure error messages to MySQL  
+    a.  Interact with the API  
+    b.  Observe connection failure error messages to MySQL     
     c.  Review 12factor [backing services](https://12factor.net/backing-services)  
-6.  Start MySQL locall using Docker:  
+6.  In a separate terminal window, start a local MySQL instance using Docker:  
     ```
     docker run --rm -ti -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=steeltoe -e MYSQL_DATABASE=steeltoe -e MYSQL_USER=steeltoe -e MYSQL_PASSWORD=steeltoe percona:5.7.35
     ```  
-    a.  Interact with the API  
-    b.  Observe failures indicating missing schema  
-7.  Run the DB migration using Steeltoe
+    a.  Interact with the API again.
+    b.  Observe failures indicating missing schema
+    c.  In the terminal first window, where you launched the app, exit the app via `ctrl-c`  
+7.  Exit the Run the DB migration using Steeltoe
     ```
     dotnet run -- runtask=migrate
     ```
-    a.  Confirm post and get requests are succesfull
+    a.  Confirm post and get requests are succesfull  
     b.  Review 12 Factor [admin processes](https://12factor.net/admin-processes)
 
 
